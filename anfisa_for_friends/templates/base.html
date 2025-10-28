@@ -1,15 +1,15 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
   <head>
+    {% load static %}
+    {% load django_bootstrap5 %}
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'img/fav/fav.png' %}" type="image">
+    {% bootstrap_css %}
     <title>
       {% block title %}{% endblock %}
     </title>
-    {% load django_bootstrap5 %}
-    {% bootstrap_css %}
   </head>
   <body>
     {% include "includes/header.html" %}
