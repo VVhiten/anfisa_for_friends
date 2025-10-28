@@ -9,7 +9,8 @@
     <div>
       {{ proposal.id }}, {{ proposal.title }}, {{ proposal.price }},
       {{ proposal.description }}{% if proposal.comment %}, {{ proposal.comment }}{% endif %}
-      <!-- Здесь должны быть ссылки на редактирование и удаление записей -->
+      <a href="{% url 'contest:edit' proposal.id%}">Редактировать заявку</a>
+      <a href="{% url 'contest:delete' proposal.id%}">Удалить заявку</a>
     </div>
   {% endfor %}
 {% endblock %}

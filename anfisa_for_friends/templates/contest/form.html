@@ -7,9 +7,13 @@
 
 {% block content %}
   {% with data=form.instance %}
-    <!-- Здесь должен быть заголовок в теге h2;
-      содержимое заголовка должно зависеть
-      от выполняемого действия -->
+    {% if '/edit/' in request.path %}
+      <h2>Редактировать заявку {{ data.id }}</h2>
+    {% elif '/delete/' in request.path %}
+      <h2>Удалить заявку {{ data.id }}</h2>
+    {% else %}
+      <h2>Подать заявку</h2>
+    {% endif %}
     <div class="card col-4">
       <div class="card-header">
         Конкурс мороженого
@@ -17,9 +21,14 @@
       <div class="card-body">
         <form method="post">
           {% csrf_token %}
-          <!-- В зависимости от выполняемого действия здесь должна
-            отображаться либо форма, либо данные из заявки в тегах p -->
-          {% bootstrap_form form %}
+          {% if '/delete/' not in request.path %}
+            {% bootstrap_form form %}
+          {% else %}
+            <p>{{ data.title }}</p>
+            <p>{{ data.price }}</p>
+            <p>{{ data.description }}</p>
+            <p>{{ data.comment }}</p>
+          {% endif %}
           {% bootstrap_button button_type="submit" content="Отправить" %}
         </form>
       </div>
