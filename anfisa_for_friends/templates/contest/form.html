@@ -21,4 +21,8 @@
   {% if form.is_valid %}
     <h2>Рецепт мороженого "{{ request.POST.title }}" принят на конкурс!</h2>
   {% endif %}
+  <hr>
+  <div>
+    <a href="{% url 'contest:list' %}">Список всех заявок</a>
+  </div>
 {% endblock %}
