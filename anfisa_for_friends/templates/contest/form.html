@@ -5,24 +5,5 @@
 {% endblock %}
 
 {% block content %}
-<form action="{% url 'contest:accepted' %}">
-  <p>
-    <label for="title">Название:</label>
-    <input type="text" name="title" id="title" required>
-  </p>
-  <p>
-    <label for="description">Описание:</label>
-    <input type="text" name="description" id="description" required>
-  </p>
-  <p>
-    <label for="price">Цена:</label>
-    <input type="number" name="price" id="price" required>
-    <small>Рекомендованная розничная цена</small>
-  </p>
-  <p>
-    <label for="comment">Комментарий:</label>
-    <input type="text" name="comment" id="comment">
-  </p>
-  <input type="submit" value="Отправить">
-</form>
+  <!-- Место для HTML-формы -->
 {% endblock %}
