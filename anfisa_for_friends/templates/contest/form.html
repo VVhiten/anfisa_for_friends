@@ -2,26 +2,33 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-  Подать заявку на конкурс
+  Конкурс рецептов мороженого
 {% endblock %}
 
 {% block content %}
-  <div class="card col-4">
-    <div class="card-header">
-      Конкурс мороженого
+  {% with data=form.instance %}
+    <!-- Здесь должен быть заголовок в теге h2;
+      содержимое заголовка должно зависеть
+      от выполняемого действия -->
+    <div class="card col-4">
+      <div class="card-header">
+        Конкурс мороженого
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          <!-- В зависимости от выполняемого действия здесь должна
+            отображаться либо форма, либо данные из заявки в тегах p -->
+          {% bootstrap_form form %}
+          {% bootstrap_button button_type="submit" content="Отправить" %}
+        </form>
+      </div>
     </div>
-    <div class="card-body">
-      <form method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% bootstrap_button button_type="submit" content="Отправить" %}
-      </form>
-    </div>
-  </div>
-  {% if form.is_valid %}
-    <h2>Рецепт мороженого "{{ form.instance.title }}" принят на конкурс!</h2>
-    <small>Номер заявки: {{form.instance.id}}</small>
-  {% endif %}
+    {% if form.is_valid %}
+      <h2>Рецепт мороженого {{ data.title }} принят на конкурс!</h2>
+      <div>Номер заявки: {{ data.id }}</div>
+    {% endif %}
+  {% endwith %}
   <hr>
   <div>
     <a href="{% url 'contest:list' %}">Список всех заявок</a>

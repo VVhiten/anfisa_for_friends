@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  {% for proposal in proposals %}
+  {% for proposal in contest_proposals %}
     <div>
-      {{ proposal.id }}, {{ proposal.title }}, {{ proposal.price }}, {{ proposal.description }}, {{ proposal.comment }}
+      {{ proposal.id }}, {{ proposal.title }}, {{ proposal.price }},
+      {{ proposal.description }}{% if proposal.comment %}, {{ proposal.comment }}{% endif %}
+      <!-- Здесь должны быть ссылки на редактирование и удаление записей -->
     </div>
   {% endfor %}
 {% endblock %}
