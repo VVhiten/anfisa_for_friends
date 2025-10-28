@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
-  <!-- Место для HTML-формы -->
-  <!-- Место для сообщения об успешном принятии заявки -->
+  <form>
+    <table>
+      {{ form }}
+    </table>
+    <input type="submit" value="Отправить">
+  </form>
+
+  {% if form.is_valid %}
+    <h2>Рецепт мороженого "{{ request.GET.title }}" принят на конкурс!</h2>
+  {% endif %}
 {% endblock %}
