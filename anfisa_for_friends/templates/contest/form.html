@@ -19,7 +19,8 @@
     </div>
   </div>
   {% if form.is_valid %}
-    <h2>Рецепт мороженого "{{ request.POST.title }}" принят на конкурс!</h2>
+    <h2>Рецепт мороженого "{{ form.instance.title }}" принят на конкурс!</h2>
+    <small>Номер заявки: {{form.instance.id}}</small>
   {% endif %}
   <hr>
   <div>
